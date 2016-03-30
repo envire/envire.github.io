@@ -1,0 +1,15 @@
+<nav>
+  <!-- Docs Nav -->
+  {% for section in site.data.nav_packages %}
+    <div class="nav-docs-section">
+      <h3>{{ section.title }}</h3>
+      <ul>
+        {% for item in section.items %}
+          <li>
+            <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</nav>

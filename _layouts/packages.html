@@ -1,0 +1,29 @@
+---
+layout: default
+---
+    <div class="row">
+        <div class="col-md-3">
+            <nav>
+                {% include nav_packages.html %}
+            </nav>
+        </div>
+        <div class="col-md-9">
+            <div class="page-header">
+                <h1>{{page.title}} <small>{{page.subtitle}}</small></h1>
+            </div>
+
+            {{ content }}
+
+            <table class="table table-condensed">
+                <tr>
+                    <td>Repo:</td><td><a href="{{page.repo-url}}">{{page.repo-url}}</a></td>
+                </tr>
+                <tr>
+                    <td>API:</td><td><a href="{{page.api-url}}">{{page.api-url}}</a></td>
+                </tr>    
+                <tr>
+                    <td>Dependencies:</td><td>{{page.dependencies}}</td>
+                </tr>    
+            </table>
+        </div>
+    </div>

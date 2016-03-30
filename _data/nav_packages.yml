@@ -1,0 +1,22 @@
+- title: Internal
+  items:
+  - id: packages_core
+    title: Core
+  - id: packages_maps_wrapper
+    title: Maps wrapper    
+- title: External
+  items:
+  - id: packages_mars
+    title: Mars   
+  - id: packages_smurf
+    title: Smurf 
+  - id: packages_maps
+    title: Maps
+- title: Tools
+  items:
+  - id: packages_boost
+    title: Boost Serialization
+- title: Rock
+  items:
+  - id: packages_orogen_envire
+    title: Orogen Envire    
