@@ -1,0 +1,19 @@
+<nav>
+  <!-- Docs Nav -->
+  {% for section in site.data.nav_tutorials %}
+    <div class="nav-sidebar">
+      <h3>{{ section.title }}</h3>
+      <ul>
+        {% for item in section.items %}
+            {% if page.url contains item.id %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
+            <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</nav>

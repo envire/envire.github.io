@@ -2,7 +2,7 @@
 layout: packages
 title: Packages
 permalink: /packages/
-order: 20
+order: 30
 nav: main
 ---
 

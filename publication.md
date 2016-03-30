@@ -2,7 +2,7 @@
 layout: default
 title: Publication
 permalink: /publication/
-order: 30
+order: 40
 nav: main
 ---
 

@@ -29,3 +29,8 @@ defaults:
     type: page
   values:
     layout: packages   
+- scope:
+    path: tutorials
+    type: page
+  values:
+    layout: tutorials   
