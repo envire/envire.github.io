@@ -2,6 +2,33 @@ body {
     padding-top: 70px; 
 }
 
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 770px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.page-header 
+{
+    margin-top: 0px;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -45,4 +72,43 @@ body {
   left: 0;
   min-width: 100%;
   height: 450px;
+}
+
+/* CUSTOMIZE THE SIDEBAR NAV
+-------------------------------------------------- */
+
+.nav-sidebar ul 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 18px;    
+}
+
+.nav-sidebar a 
+{
+    color: #555;
+}
+
+.nav-sidebar a:hover
+{
+    color: #23527c;
+}
+
+.nav-sidebar ul ul li
+{
+    padding-left: 10px; 
+}
+
+.nav-sidebar > ul > li.active > a 
+{
+    color: #563d7c;
+    text-decoration: underline;
+}
+
+.nav-sidebar ul li.active > a 
+{
+    color: #563d7c;
+    text-decoration: underline;
 }

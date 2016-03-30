@@ -9,28 +9,51 @@
   - id: core_graph
     title: Graph
     subitems:
-      - id: core_graph_structure
-        title: Structure
+      - id: core_graph_tree
+        title: Tree        
       - id: core_graph_transformation
         title: Transformation
-      - id: core_graph_items
-        title: Items
-- title: Plugins
-  items:
-  - id: plugins_overview
-    title: Overview 
-  - id: plugin_new_plugin
-    title: Write new plugin
+      - id: core_graph_event
+        title: Event
+  - id: core_item
+    title: Item
+  - id: core_events
+    title: Events
+  - id: core_plugins
+    title: Plugins
+  - id: core_serialization
+    title: Serialization
 - title: Maps
   items:
-  - id: maps_overview
-    title: Overview
-  - id: maps_types_existing
-    title: Existing Types
+  - id: maps_structure
+    title: Structure
+  - id: maps_types_internal
+    title: Internal Types
+    subitems:
+      - id: maps_types_internal_elevation
+        title: Elevation Map
+      - id: maps_types_internal_mls
+        title: MultiSurfacePatch Map
+  - id: maps_types_external
+    title: External Types
+    subitems:
+      - id: maps_types_external_integration
+        title: Integration
 - title: Simulation
   items:
   - id: simulation_overview
     title: Overview   
   - id: simulation_robot_representation
     title: Robot Representation
+- title: Plugin System
+  items:
+  - id: plugins_overview
+    title: Overview 
+  - id: plugin_new_plugin
+    title: Write new plugin    
+- title: EXAMPLES
+  items:
+    - id: page_example
+      title: Page Example
+
 

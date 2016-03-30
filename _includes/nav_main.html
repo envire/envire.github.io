@@ -17,10 +17,15 @@
         {% assign pages = site.pages | sort:"order"%}
         {% for my_page in pages %}
             {% if my_page.nav == 'main' && my_page.title %}
-                {% if page.url == my_page.url %}
-                    <li class="active"><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}<span class="sr-only">(current)</span></a></li>
+                {% if my_page.redirect_to %}
+                    {% assign url = my_page.redirect_to | prepend: site.url %}
                 {% else %}
-                    <li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
+                    {% assign url = my_page.url | prepend: site.baseurl %}
+                {% endif %}
+                {% if page.url == my_page.url %}
+                    <li class="active"><a href="{{ url }}">{{ my_page.title }}<span class="sr-only">(current)</span></a></li>
+                {% else %}
+                    <li><a href="{{ url }}">{{ my_page.title }}</a></li>
                 {% endif %}
             {% endif %}
         {% endfor %}            
