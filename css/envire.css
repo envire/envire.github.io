@@ -112,3 +112,9 @@ body {
     color: #563d7c;
     text-decoration: underline;
 }
+
+.container p img 
+{
+    display: block;
+    margin: 0 auto;
+}
