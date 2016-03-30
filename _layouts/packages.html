@@ -14,6 +14,7 @@ layout: default
 
             {{ content }}
 
+            {% if page.nav != 'main' %}
             <table class="table table-condensed">
                 <tr>
                     <td>Repo:</td><td><a href="{{page.repo-url}}">{{page.repo-url}}</a></td>
@@ -25,5 +26,6 @@ layout: default
                     <td>Dependencies:</td><td>{{page.dependencies}}</td>
                 </tr>    
             </table>
+            {% endif %}
         </div>
     </div>
