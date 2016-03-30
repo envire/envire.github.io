@@ -5,7 +5,11 @@
       <h3>{{ section.title }}</h3>
       <ul>
         {% for item in section.items %}
-          <li>
+            {% if page.url contains item.id %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
             <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
           </li>
         {% endfor %}
