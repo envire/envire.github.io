@@ -12,7 +12,7 @@ and time & space transformations between the data.
 The graph itself is implemented as inheritance chain. Each class in the chain
 adds some of the functionality.
 
-![graph uml](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![graphuml](https://raw.githubusercontent.com/envire/envire.github.io/master/images/envire_core_graph_inherit.png)
 
 
 ``envire::core::Graph<E,V>`` is the root class the graph structure. It extends
