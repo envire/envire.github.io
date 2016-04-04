@@ -8,9 +8,7 @@
     title: Overview
   - id: core_graph
     title: Graph
-    subitems:
-      - id: graph_structure_internal
-        title: Structure        
+    subitems: 
   - id: core_item
     title: Item
   - id: core_events
