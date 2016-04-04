@@ -63,7 +63,7 @@ visualization.
 **Minimal Example**
 *Header File:*
 
-```c++
+```cpp
 namespace envire { namespace myNamespace
 {
   struct MyInternalType{};
