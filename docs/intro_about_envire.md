@@ -6,7 +6,7 @@ subtitle: "Hallo, I am Envire!"
 
 ## Envire Rationale
 
-Envire is a package for representing information on the environment. The rationale behind the development is to have a common way of holding any information related to the environment of the robot. The application of envire is mainly focused on navigation tasks for now, but could be extended to also include robot environment interaction for manipulation. The reasoning for having a common datastructure for representing the environment is to simplify the interchange of algorithms between applications.
+Envire is a package for representing arbitrary information on the environment of a robot. The rationale behind the development is to have a common way of holding any information related to the environment of a robot and how the information relates to each other. The application of envire is mainly focused on navigation tasks for now, but could be extended to also include robot environment interaction for manipulation. The reason for having a common datastructure for representing the environment is to simplify the interchange of algorithms between applications.
 
 ## Overview
 
