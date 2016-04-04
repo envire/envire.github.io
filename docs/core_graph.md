@@ -59,7 +59,8 @@ should not be necessary.
 New item types should always be defined using the envire plugin mechanism because
 the plugin macros add metadata that is needed for corect serialization and
 visualization.
-##### Minimal example
+
+**Minimal Example**
 *Header File:*
 
 ```c++
