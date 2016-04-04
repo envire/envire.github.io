@@ -89,7 +89,8 @@ namespace boost { namespace serialization
 ```
 
 *Cpp File:*
-```c++
+
+```cpp
 ENVIRE_REGISTER_PLUGIN(envire::pcl::PointCloud, pcl::PCLPointCloud2)
 ```
 
