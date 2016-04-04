@@ -8,7 +8,7 @@ subtitle:
 The envire graph is the backbone of the whole library. It stores arbitrary data
 and time & space transformations between the data.
 
-### Structure [graph_structure_internal]###
+### Structure
 The graph itself is implemented as inheritance chain. Each class in the chain
 adds some of the functionality.
 
@@ -61,6 +61,7 @@ the plugin macros add metadata that is needed for corect serialization and
 visualization.
 ##### Minimal example
 *Header File:*
+
 ```c++
 namespace envire { namespace myNamespace
 {
@@ -86,6 +87,7 @@ namespace boost { namespace serialization
   }
 }}
 ```
+
 *Cpp File:*
 ```c++
 ENVIRE_REGISTER_PLUGIN(envire::pcl::PointCloud, pcl::PCLPointCloud2)
