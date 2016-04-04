@@ -9,12 +9,8 @@
   - id: core_graph
     title: Graph
     subitems:
-      - id: core_graph_tree
-        title: Tree        
-      - id: core_graph_transformation
-        title: Transformation
-      - id: core_graph_event
-        title: Event
+      - id: graph_structure_internal
+        title: Structure        
   - id: core_item
     title: Item
   - id: core_events
@@ -42,18 +38,16 @@
 - title: Simulation
   items:
   - id: simulation_overview
-    title: Overview   
+    title: Overview
   - id: simulation_robot_representation
     title: Robot Representation
 - title: Plugin System
   items:
   - id: plugins_overview
-    title: Overview 
+    title: Overview
   - id: plugin_new_plugin
-    title: Write new plugin    
+    title: Write new plugin
 - title: EXAMPLES
   items:
     - id: page_example
       title: Page Example
-
-

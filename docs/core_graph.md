@@ -8,7 +8,7 @@ subtitle:
 The envire graph is the backbone of the whole library. It stores arbitrary data
 and time & space transformations between the data.
 
-### Structure
+### Structure [graph_structure_internal]###
 The graph itself is implemented as inheritance chain. Each class in the chain
 adds some of the functionality.
 
