@@ -20,9 +20,9 @@ model the environment. This separateness has two clear drawbacks one on the
 software side and one on the robotics control side. The software engineering
 drawback is that multiple code providing very similar functionality
 (spatial-temporal representation) has to be maintained. The second drawback
-comes when aiming to generate simulations from real world data, in the
-classical simulators this would require the generating of converters to switch
-between sensor data driven representations and simulations. 
+is that generating simulations from real world data turns unefficient: In the
+classical simulators this requires the implementation of converters to switch
+between sensor data based representations and simulation representations. 
 
 In summary, Envire Simulation achieves a seamless integration of the simulation
 environment with the other components of the robotic control system by sharing
@@ -30,4 +30,3 @@ the same representational structure. Furthermore, by sharing the same
 representation library the improvements on this library for other robotic
 application will also positively affect the simulation engine and vice-versa.
 
-`envire::core` is the backbone of the envire library. It contains the [graph structure](core_graph.md), the [event system](core_events.md) and the [plugin system](core_plugins.md).
