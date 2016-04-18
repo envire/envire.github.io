@@ -19,20 +19,27 @@
     title: Serialization
 - title: Maps
   items:
-  - id: maps_structure
-    title: Structure
+  - id: maps_overview
+    title: Overview
   - id: maps_types_internal
-    title: Internal Types
+    title: EnviRe Types
+  - id: maps_grid_map
+    title: Grid Map
     subitems:
-      - id: maps_types_internal_elevation
+      - id: maps_elevation_map
         title: Elevation Map
-      - id: maps_types_internal_mls
-        title: MultiSurfacePatch Map
+      - id: maps_mls
+        title: Multi-Level Surface Map 
+      - id: maps_traversability
+        title: Traversability Map
+  - id: maps_types_tological
+    title: Topological Map   
+  - id: maps_types_geo
+    title: Geo Map
   - id: maps_types_external
     title: External Types
-    subitems:
-      - id: maps_types_external_integration
-        title: Integration
+  - id: maps_integration
+    title: Integration into Core
 - title: Simulation
   items:
   - id: simulation_overview
@@ -45,6 +52,8 @@
     title: Overview
   - id: plugin_new_plugin
     title: Write new plugin
+- title: Rock
+
 - title: EXAMPLES
   items:
     - id: page_example
