@@ -21,8 +21,6 @@
   items:
   - id: maps_overview
     title: Overview
-  - id: maps_types_internal
-    title: EnviRe Types
   - id: maps_grid_map
     title: Grid Map
     subitems:
