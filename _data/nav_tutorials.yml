@@ -5,16 +5,15 @@
 
 - title: Basic
   items:
-  - id: tutorial_basic_01
-    title: Tutorial 01
-  - id: tutorial_basic_02
-    title: Tutorial 02    
-  - id: tutorial_basic_03
-    title: Tutorial 03
+  - id: graph_tutorials
+    title: Envire Graph
+    subitems:
+    - id: tutorial_create_new_item
+      title: Creating new Items
 
 - title: Advanced
   items:
   - id: tutorial_advanced_01
     title: Tutorial 01
   - id: tutorial_advanced_02
-    title: Tutorial 02  
+    title: Tutorial 02

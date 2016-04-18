@@ -15,15 +15,23 @@ adds some of the functionality.
 ![graphuml](https://raw.githubusercontent.com/envire/envire.github.io/master/images/envire_core_graph_inherit.png)
 
 
-``envire::core::Graph<E,V>`` is the root class the graph structure. It extends
+``envire::core::Graph<E,V>`` is the root class of the graph structure. It extends
 a ``boost::labeled_graph``. The template parameters ``E`` and ``V`` are edge and
-vertex properties, i.e. they are used to add additional data to the edges and
-vertices of the graph. The ``Graph`` provides basic features like frame ids, support
-for events and tree views.
+vertex properties, i.e. they define the type of the data that can be stored
+in the edges and vertices of the graph. Edge properties need to implement the ``envire::core::EdgePropertyConcept`` while vertex properties need to implement ``envire::core::FramePropertyConcept``. The concepts are checked at compile time
+ using the Boost Concept Checking Library.
 
-Edge properties need to implement the ``envire::core::EdgePropertyConcept`` while
-vertex properties need to implement ``envire::core::FramePropertyConcept``.
-The concepts are checked at compile time using the Boost Concept Checking Library.
+ The following features are provided by
+the ``Graph``:
+* Frames (vertices) are indexed by a unique string-based frame id and can be
+retrieved in O(1).
+* A double-linked graph structure is enforced. I.e. if an edge is added, the
+  inverse edge is calculated and added automatically. If an edge is updated,
+  the inverse is updated as well.
+* Users are informed about changes in the graph structure via a publisher
+  subscriber based event system.
+* TreeViews and Paths are provided to navigate the graph structure.
+
 
 The ``TransformGraph<V>`` extends ``Graph<Transformation, V>``. It adds functionality
 to calculate and set transformations between frames.
@@ -32,18 +40,17 @@ The ``EnvireGraph`` extends ``TransformGraph<Frame>``. It adds functionality to
 add, remove and manipulate items.
 
 
-
 #### Frames
-Frames are vertices in the graph structure. Each frame is identified by an identifier
-(string). The identifier has to be unique.
+Frames are vertices in the structure of the ``EnvireGraph``. Each frame is
+identified by an unique identifier (string). The identifier has to be unique.
 Each frame carries a set of Items indexed by type.
 
 #### Transformations
-Transformations (envire::core::Transformation) are edges in the graph structure.
+Transformations (envire::core::Transformation) are edges in the ``EnvireGraph``.
 Transformations describe the spatial and temporal displacement between frames.
 
 #### Items
-The data elements that are stored in the nodes of the graph are called Items.
+The data elements that are stored in the Frames of the graph are called Items.
 Every item must inherit from `envire::core::ItemBase`. `getTypeInfo()`
 and `getEmbeddedTypeInfo()` need to be overridden to provide correct type information
 about the item. `getTypeInfo()` should return the `type_info` of the item itself
@@ -52,48 +59,11 @@ the type of the data that is returned in `getRawData()`).
 
 A template (`envire::core::Item<T>`) that inherits from `ItemBase` and carries
 arbitrary data is provided for convenience. Thus manually inheriting from `ItemBase`
-should not be necessary.
+should not be necessary. A minimal working example, that shows how to create
+new items can be found in the examples
 
 
-#### Creating new Items
-New item types should always be defined using the envire plugin mechanism because
-the plugin macros add metadata that is needed for corect serialization and
-visualization.
 
-**Minimal Example**
-*Header File:*
-
-```cpp
-namespace envire { namespace myNamespace
-{
-  struct MyInternalType{};
-
-  struct MyItem : public envire::core::Item<MyInternalType>
-  {
-    ENVIRE_PLUGIN_HEADER(MyItem)
-    virtual const std::type_info* getTypeInfo() const override
-    {
-      return &typeid(envire::myNamespace::MyItem);
-    }
-  };
-}}
-
-
-namespace boost { namespace serialization
-{
-  template<class Archive>
-  void serialize(Archive & ar, ::envire::myNamespace::MyInternalType & data, const unsigned int version)
-  {
-    //serialize
-  }
-}}
-```
-
-*Cpp File:*
-
-```cpp
-ENVIRE_REGISTER_PLUGIN(envire::pcl::PointCloud, pcl::PCLPointCloud2)
-```
 
 #### Tree Views
 ``TreeViews`` are lightweight structures that *view* a portion of the graph as tree.
