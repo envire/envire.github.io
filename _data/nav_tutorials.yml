@@ -7,7 +7,7 @@
   items:
   - id: graph_tutorials
     title: Envire Graph
-    subitems:
+    items:
     - id: tutorial_create_new_item
       title: Creating new Items
 
