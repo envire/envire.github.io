@@ -11,6 +11,17 @@
                 <li>
             {% endif %}
             <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
+            {% for subitem in item.subitems %}
+            <ul>
+                {% if page.url contains subitem.id %}
+                    <li class="active">
+                {% else %}
+                    <li>
+                {% endif %}
+                    <a href="{{ subitem.id | prepend: site.baseurl }}.html">{{ subitem.title }}</a>
+                </li>
+            </ul>            
+            {% endfor %}
           </li>
         {% endfor %}
       </ul>
