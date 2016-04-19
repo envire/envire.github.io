@@ -5,8 +5,8 @@ subtitle:
 ---
 
 ``GridMap`` represents the gridbased map structure, where each cell can be accessed by its index. 
-The ``Index`` is defined as pair of unsigned integers, which represent the discret cell position in x and y direction
-without relation to the grid local frame. The Indexes are oriented to the grid bordes and stars at the bottom low corner.
+The ``Index`` is defined as pair of unsigned integers, which represent the discrete cell position in x and y direction
+without relation to the grid local frame. The Indexes are oriented to the grid borders and stars at the bottom low corner.
 
 (TODO: add image of grid and local frame)
 
@@ -21,4 +21,4 @@ Grid Map realizes the access to a grid cell by index or by position, where the p
 The projection of the world position into Grid Map to estimate the corresponding cell is done by taking into account the local grid frame, which is specified by ``offset`` in ``LocalMap``.
 
 ``GridMap`` allows to create any type of gridbased maps. The cell type stored
-in the map can be specified by the developer/user freely. Moreover, the default storage used in GridMap is ``std::vector``, due to its computational efficiency. However, the memory storage can be also extanded. 
+in the map can be specified by the developer/user freely. Moreover, the default storage used in GridMap is ``std::vector``, due to its computational efficiency. However, the memory storage can be also extended. 
