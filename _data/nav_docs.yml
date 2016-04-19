@@ -9,8 +9,6 @@
   - id: core_graph
     title: Graph
     subitems: 
-  - id: core_item
-    title: Item
   - id: core_events
     title: Events
   - id: core_plugins
@@ -27,11 +25,11 @@
       - id: maps_elevation_map
         title: Elevation Map
       - id: maps_mls
-        title: Multi-Level Surface Map 
+        title: Multi-Level Surface Map
       - id: maps_traversability
         title: Traversability Map
   - id: maps_types_tological
-    title: Topological Map   
+    title: Topological Map
   - id: maps_types_geo
     title: Geo Map
   - id: maps_types_external
