@@ -8,13 +8,19 @@
     title: Overview
   - id: core_graph
     title: Graph
-    subitems: 
   - id: core_events
     title: Events
   - id: core_plugins
     title: Plugins
   - id: core_serialization
     title: Serialization
+  - id: core_examples
+    title: Examples
+    subitems:
+      - id: graph_example_add_frame
+        title: Adding Frames & Items
+      - id: graph_example_transforms
+        title: Working with Transformations
 - title: Maps
   items:
   - id: maps_overview
@@ -50,7 +56,7 @@
     title: Write new plugin
 - title: Rock
 
-- title: EXAMPLES
+- title: Examples
   items:
     - id: page_example
       title: Page Example
