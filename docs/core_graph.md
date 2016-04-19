@@ -23,6 +23,7 @@ in the edges and vertices of the graph. Edge properties need to implement the ``
 
  The following features are provided by
 the ``Graph``:
+
 * Frames (vertices) are indexed by a unique string-based frame id and can be
 retrieved in O(1).
 * A double-linked graph structure is enforced. I.e. if an edge is added, the
@@ -60,7 +61,7 @@ the type of the data that is returned in `getRawData()`).
 A template (`envire::core::Item<T>`) that inherits from `ItemBase` and carries
 arbitrary data is provided for convenience. Thus manually inheriting from `ItemBase`
 should not be necessary. A minimal working example, that shows how to create
-new items can be found in the examples
+new items can be found in the [Link to page]({{site.baseurl}}/tutorials/tutorial_basic_envire_graph_create_new_items.html)
 
 
 

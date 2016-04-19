@@ -5,11 +5,11 @@
 
 - title: Basic
   items:
-  - id: maps_grid_map
-    title: Grid Map
+  - id: graph_tutorials
+    title: Envire Graph
     subitems:
-      - id: maps_elevation_map
-        title: Elevation Map
+    - id: tutorial_basic_envire_graph_create_new_items
+      title: Creating new Items
 
 - title: Advanced
   items:
