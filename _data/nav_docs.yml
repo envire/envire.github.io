@@ -17,8 +17,10 @@
   - id: core_examples
     title: Examples
     subitems:
-      - id: examples/graph_example_add_frame
+      - id: graph_example_add_frame
         title: Adding Frames & Items
+      - id: graph_example_transforms
+        title: Working with Transformations
 - title: Maps
   items:
   - id: maps_overview
