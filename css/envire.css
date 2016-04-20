@@ -72,6 +72,15 @@ body {
     margin-right: auto;    
 }
 
+@media (min-width: 992px) {
+    .carousel-caption img 
+    {
+        max-width: 350px;
+        max-height: 250px;
+    }
+}
+
+
 /* Carousel base class */
 .carousel {
   margin-bottom: 0px;
