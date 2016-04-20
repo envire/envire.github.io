@@ -53,6 +53,8 @@ body {
     text-align: left;
     padding-bottom: 50px;
     padding-top: 50px;
+    right: 0px;
+    left: 0px;
 }
 
 .carousel-indicators li 
@@ -72,18 +74,17 @@ body {
 
 /* Carousel base class */
 .carousel {
-  height: 450px;
   margin-bottom: 0px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
   top: 0px;
+  position:relative;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 450px;
   background-color: #FFF;
 }
 
