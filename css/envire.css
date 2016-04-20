@@ -1,5 +1,5 @@
 body { 
-    padding-top: 70px; 
+    padding-top: 70px; /* the height (50px) and margin-bottom (20px) of nav bar */
 }
 
 .container {
@@ -8,27 +8,15 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 770px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
 
-.page-header 
+@media (min-width: 1200px)
 {
-    margin-top: 0px;
+    .container {
+        width: 970px;
+    }
 }
 
+/* NAV BAR */
 .navbar-brand > img {
   display: block;
   float: left;
@@ -36,60 +24,18 @@ body {
   margin-right: 5px;
 }
 
-.navbar-brand 
+.nav > li > a
 {
-    font-weight: 600;
-    letter-spacing: 1px;
-    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
-.carousel-caption 
-{
-    color: #333333;
-    text-shadow: none;
-    text-align: left;
-    padding-bottom: 50px;
-    padding-top: 50px;
-    right: 0px;
-    left: 0px;
-}
-
-.carousel-indicators li 
-{
-    border: 1px solid #333333;
-    background-color: rgba(125, 125, 125, 0);
-}
-
-.carousel-caption img 
-{
-    max-width: 450px;
-    max-height: 350px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;    
-}
-
-@media (min-width: 992px) {
-    .carousel-caption img 
-    {
-        max-width: 350px;
-        max-height: 250px;
-    }
-}
-
-
 /* Carousel base class */
 .carousel {
   margin-bottom: 0px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-  top: 0px;
-  position:relative;
 }
 
 /* Declare heights because of positioning of img element */
@@ -102,56 +48,105 @@ body {
     display: block;
 }
 
-/* CUSTOMIZE THE SIDEBAR NAV
--------------------------------------------------- */
-
-.nav-sidebar ul 
+.carousel-indicators
 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 13px;
-    line-height: 18px;    
+    margin-bottom: 0px;
 }
 
-.nav-sidebar a 
+.carousel-indicators li 
 {
-    color: #555;
+    border: 1px solid #333333;
+    background-color: rgba(125, 125, 125, 0);
 }
 
-.nav-sidebar a:hover
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption 
 {
-    color: #23527c;
+    color: #333333;
+    text-shadow: none;
+    text-align: left;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    right: 0px;
+    left: 0px;
+    z-index: 10;
+    top: 0px;
+    position:relative;    
 }
 
-.nav-sidebar ul ul li
+.carousel-caption .container 
 {
-    padding-left: 10px; 
+    padding-bottom: 10px;
 }
 
-.nav-sidebar > ul > li.active > a 
-{
-    color: #563d7c;
-    text-decoration: underline;
-}
-
-.nav-sidebar ul li.active > a 
-{
-    color: #563d7c;
-    text-decoration: underline;
-}
-
-.container p img 
+.carousel-caption img 
 {
     display: block;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;    
 }
+
+@media (max-width: 360px) {
+    .carousel-caption img 
+    {
+        max-width: 250px;
+        max-height: 180px; 
+    }
+}
+
+@media (min-width: 360px) {
+    .carousel-caption img 
+    {
+        max-width: 350px;
+        max-height: 250px;        
+    }
+}
+
+@media (min-width: 460px) {
+    .carousel-caption img 
+    {
+        max-width: 450px;
+        max-height: 325px;
+    }
+}
+
+.carousel-caption h2 
+{
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 990px) {
+     .carousel-caption h2 
+    {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }   
+}
+
+/* HOME PAGE*/
 
 .block_container
 {
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 40px;
+}
 
+.block_container .row .col-md-4
+{
+    margin-bottom: 30px;
+}
+
+.block_container .row .col-md-4
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.block_container h3 
+{
+    font-size: 20px;
+    margin-top: 0px;
 }
 
 div.gray 
@@ -160,8 +155,9 @@ div.gray
     border: 1px solid #e7e7e7;
 }
 
-div.gray .row {
-    margin-bottom: 0px;
+.home_header 
+{
+    margin-bottom: 50px;
 }
 
 .home_header h2
@@ -177,38 +173,11 @@ div.gray .row {
     color: #777;
 }
 
-.home_header 
-{
-    margin-bottom: 70px;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-  border: 1px solid #e7e7e7;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  clear: both;
-}
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 .middle img
 {
     display: block;
     margin: 0 auto;
+    margin-bottom: 15px;
 }
 
 .middle p, .middle h3
@@ -216,20 +185,7 @@ body {
     text-align: center;
 }
 
-.block_container .row 
-{
-    margin-bottom: 30px;
-}
 
 
-.carousel-caption .row h2 
-{
-    margin-top: 60px;
-    margin-bottom: 20px;
-}
 
-.nav > li > a
-{
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
+
