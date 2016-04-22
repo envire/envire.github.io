@@ -12,7 +12,7 @@ subtitle: of Envire Simulation
 Envire-Simulation is a Physics-Based Robotics Simulation engine that uses
 Envire as backend to manage, update and store the simulation objects.
 Envire-Simulation or Envire-Mars has its origins in the Robotics Simulator
-[Mars]. The two main differences with respect to Mars are: an Envire Based
+[Mars](http://rock-simulation.github.io/mars//). The two main differences with respect to Mars are: an Envire Based
 management of the simulation objects and a more modular software architecture.
 
 ### Mars and Envire-Mars
@@ -47,4 +47,3 @@ other robotic application will also positively affect the simulation engine and
 vice-versa.
 
 
-[Mars](http://rock-simulation.github.io/mars//)
