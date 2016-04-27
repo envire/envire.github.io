@@ -170,13 +170,33 @@ plug-in class is available.
 
 ## Design
 
-
-
 ![plugin_manager_design]({{site.baseurl}}/images/docs/plugins/plugin_manager_design.png)
 
-TODO
-<!---
-- plugin manager layer
-- plugin loader layer
-- EnviRe plugin loader
---->
+The EnviRe ``envire_core::ClassLoader`` relies on the plugin_manager library which relies on the
+class_loader library.
+The class_loader library handles the export of classes, loading of shared libraries
+and the creation of new instances. More informations about the class_loader can be
+found [here](http://wiki.ros.org/class_loader).
+The plugin_manager library handles XML files to provide a-priori meta informations
+about the available plug-ins. In contrast to the ROS [plugin_lib](http://wiki.ros.org/pluginlib),
+the plugin_manager supports singleton instances, associations and is framework
+independent.
+
+Advantages of the plugin_manager library:
+
+- Gather meta informations of available plugins without loading them
+- Model associations between classes
+- Support of singleton instances
+- Framework independent
+
+
+The ``plugin_manager::PluginManager`` class parses all XML files and preprocesses the informations.
+It can be queried about available plug-in classes, relations, associations or properties of classes.
+An example of a XML file can be found in the previous section.
+
+The ``plugin_manager::PluginLoader`` is a singleton class which on demand creates a new
+``class_loader::ClassLoader`` instance for each new library that is required. It also holds and
+returns the same instance of a plug-in class if it is marked as singleton.
+
+The ``envire_core::ClassLoader`` extends the ``PluginLoader`` by knowledge about the EnviRe
+base classes.
