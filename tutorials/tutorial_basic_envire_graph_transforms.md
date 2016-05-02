@@ -72,7 +72,7 @@ use ``getPath()`` to retrieve a a list of all frames that need to be traversed
 to calculate the transformation. The path can be used to speed up the calculation
 of the transform even further.
 
-**TODO NOT IMPLEMENTED YET**
+**TODO NOT IMPLEMENTED**
 
 ```cpp
 EnvireGraph g;
@@ -82,3 +82,7 @@ const FrameId b = "frame_b";
 const vector<FrameId> path = graph.getPath(A, D);
 const Transform tf = graph.getTransform(a, b, path);
 ```
+
+## Disconnecting a Frame from the Graph
+``disconnectFrame()`` can be used to remove all transformations coming from
+or leading to a certain frame.

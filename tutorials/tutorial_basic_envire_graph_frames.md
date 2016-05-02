@@ -22,9 +22,11 @@ const FrameId frameB = "frame_b";
 Transform tf;
 g.addTransform(frameA, frameB, tf);
 ```
-
 Frames cannot be added twice. If a frame with the given name already exists,
 an exception will be thrown.
+
+The above examples will create the frame property using the default constructor.
+Another constructor can be used by calling ``emplaceFrame()``.
 
 ## Removing Frames
 Frames can be removed by calling ``removeFrame()``:
@@ -123,7 +125,7 @@ Iterator it = g.getItem(frame, 42);
 ```
 
 ## Accessing Items without Iterators
-If type information are not available at compile time, ``getItems()`` can also
+If type information is not available at compile time, ``getItems()`` can also
 be used with ``std::type_index``:
 
 ```cpp
