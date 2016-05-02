@@ -8,6 +8,8 @@
   - id: graph_tutorials
     title: Envire Graph
     subitems:
+    - id: tutorial_basic_envire_graph_frames
+      title: Manipulating Frames
     - id: tutorial_basic_envire_graph_create_new_items
       title: Creating new Items
 
