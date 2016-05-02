@@ -5,8 +5,11 @@ subtitle: of Envire core
 ---
 
 ## Introduction
-* what is the envire core
-* what is its intended use case?
-* main features
+Envire Core is the main component of the envire library. It consists of:
 
-`envire::core` is the backbone of the envire library. It contains the [graph structure](core_graph.md), the [event system](core_events.md) and the [plugin system](core_plugins.md).
+* A graph structure to represent the environment and utilities that help in
+  manipulating and analyzing the structure.
+* An event system to notify users about changes in the environment.
+* A plugin system that allows the user to store arbitrary Objects in the
+  envire graph.
+* Serialization.
