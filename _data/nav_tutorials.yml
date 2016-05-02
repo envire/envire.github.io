@@ -12,6 +12,8 @@
       title: Manipulating Frames
     - id: tutorial_basic_envire_graph_transforms
       title: Managing Transformations
+    - id: tutorial_basic_envire_treeview
+      title: Tree Views
     - id: tutorial_basic_envire_graph_new_items
       title: Creating new Item Types
 
