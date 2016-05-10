@@ -1,6 +1,6 @@
 ---
-id: tutorial_basic_envire_graph_create_new_items
-title: Creating new Items
+id: tutorial_basic_envire_graph_new_items
+title: Creating new Item Types
 ---
 New item types should always be defined using the envire plugin mechanism because
 the plugin macros add metadata that is needed for correct serialization and
