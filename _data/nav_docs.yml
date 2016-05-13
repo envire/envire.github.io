@@ -48,6 +48,17 @@
     title: Overview
   - id: simulation_robot_representation
     title: Robot Representation
+  - id: envire_collision
+    title: Envire Collision 
+    subitems:
+      - id: collsion_overview
+        title: Overview
+      - id: collision detection
+        title: Collision Detection
+      - id: mls_collider
+        title: MLS_Collider
+      - id: collision_examples
+        title: Examples                
 - title: Plugin System
   items:
   - id: plugins_overview
