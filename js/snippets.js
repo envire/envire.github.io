@@ -48,6 +48,9 @@ function loadto(url,snippetId,target,callback){
 		var start = file.indexOf(starttag);
 		var stop = file.indexOf(stoptag);
 		
+		console.log(start);
+		console.log(stop);
+		
 		if (start ==-1){
 			target.innerHTML = "could not find snippet start tag " + starttag + "<br>in " + url;
 		}
