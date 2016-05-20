@@ -25,20 +25,44 @@
                                 <img data-holder-rendered="true" src="images/slider/garage-white.png" alt="Slider 1 MLS Map">
                             </div>
                             <div class="col-md-1">
-                            </div>                            
+                            </div>
                             <div class="col-md-5">
-                                <h2>Environment Representation</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                                <ul>
-                                    <li>Graph</li>
-                                    <li>Maps</li>
-                                    <li>Visualization</li>
-                                </ul>     
+                                <h2><b>Environment Representation</b></h2>
+                                <p>EnviRe is the environment representation
+                                <b>front-end</b> to store information regarding robot's
+                                <b>perception</b> of the <b>world</b>. The model is a strongly
+                                connected directed graph which allows data
+                                processing regarding autonomous systems demands.
+                                </p>
                             </div> 
                         </div> 
                     </div>
                 </div>
-            </div>    
+            </div>
+            <div class="item"> 
+                <div class="carousel-caption">    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img data-holder-rendered="true" src="images/slider/garage-white.png" alt="Slider 3 MLS Map">  
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-5">
+                                <h2><b>EnviRe in Navigation</b></h2>
+                                <p>EnviRe supports localization by means of
+                                interfacing with optimization back-ends.  Each
+                                node is able to store common perception objects
+                                (e.g. PCL Point Cloud) and local maps (e.g.
+                                elevation maps, octomaps, multi-level-surface
+                                maps, geometric maps) using third-party
+                                libraries.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="item"> 
                 <div class="carousel-caption">    
                     <div class="container">
@@ -49,8 +73,15 @@
                             <div class="col-md-1">
                             </div>
                             <div class="col-md-5">
-                                <h2>EnviRe for Navigation</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>  
+                                <h2><b>EnviRe in Planning</b></h2>
+                                <p>EnviRe allows to capture various properties
+                                of the environment which can be compiled in
+                                traversability - or costmaps. A traversability map
+                                provides a binary or continuous measure that informs
+                                the planner of non-negotiable terrain or hazards and in
+                                the later case allows to encode a preference for traveling
+                                over relatively flat terrain.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -64,27 +95,18 @@
                                 <img data-holder-rendered="true" src="images/slider/garage-white.png" alt="Slider 3 MLS Map">  
                             </div>
                             <div class="col-md-1">
-                            </div>                            
-                            <div class="col-md-5">
-                                <h2>EnviRe for Mapping</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>  
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>     
-            <div class="item"> 
-                <div class="carousel-caption">    
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img data-holder-rendered="true" src="images/slider/garage-white.png" alt="Slider 3 MLS Map">  
-                            </div>
-                            <div class="col-md-1">
-                            </div>                            
                             <div class="col-md-5">
-                                <h2>Envire for Simulation</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>  
+                                <h2><b>EnviRe in Simulation</b></h2>
+                                <p> EnviRe supports the process to automatically build
+                                simulations in the real-time physics engine (e.g. Open
+                                Dynamics Engine). It works by populating the graph with
+                                simulation objects which can correspond to perceived ones.
+                                This feature is useful for headless simulation (i.e. on-board internal
+                                simulation) because it enables to simulate complex robot-environment
+                                interactions based on perception data from the
+                                real world.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -95,9 +117,9 @@
     <div class="block_container gray">
         <div class="container middle">
             <div class="home_header">
-                <h2>Build your own environment representation</h2>
-                <h4>Envire is designed for autonomous systems in real world
-                    scenarios.</h4>
+                <h2>Build your own Environment</h2>
+                <h4>EnviRe is designed to represent the world for autonomous
+                    systems in real scenarios.</h4>
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -127,13 +149,14 @@
     <div class="block_container full_size">
         <div class="container">
             <div class="home_header">
-                <h2>Take advantage of powerfull features</h2>
+                <h2>Take advantage of EnviRe features</h2>
                 <h4>EnviRe is a modular, tool-based library with an open-ended
                     design.</h4>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_01.png" height="40"/>&nbsp;&nbsp;Directed Graph</h3>
+                    <h3><img src="images/icons/icon_01.png"
+                        height="40"/>&nbsp;&nbsp;Envire Graph</h3>
                     <p>The EnviRe model is a strongly connected directed graph
                     which facilitates to store and relate sensor data
                     acquisition, processing, and operations among different data
@@ -141,14 +164,16 @@
                     planning demands. </p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_02.png" height="40"/>&nbsp;&nbsp;Data Representation</h3>
-                    <p>In environment representation Data is King. A diverse set
+                    <h3><img src="images/icons/icon_02.png"
+                        height="40"/>&nbsp;&nbsp;Data is King</h3>
+                    <p>In environment representation data is king. A diverse set
                     of processed sensory data is allowed to store in EnviRe.
                     Classic maps, point clouds, features and many more are the
                     means to comprise a rich representation of the world.</p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_03.png" height="40"/>&nbsp;&nbsp;Operators</h3>
+                    <h3><img src="images/icons/icon_03.png"
+                        height="40"/>&nbsp;&nbsp;Operators</h3>
                     <p>The reasoning for having a common datastructure for
                     representing the environment is to simplify the interchange
                     of algorithms between applications. Operators facilitates
@@ -157,20 +182,23 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_04.png" height="40"/>&nbsp;&nbsp;Navigation</h3>
+                    <h3><img src="images/icons/icon_04.png"
+                        height="40"/>&nbsp;&nbsp;Navigation</h3>
                     <p>Envire is mainly designed to support autonomous
                     navigation in real world scenarios. Localization,
                     perception, path planning and execution tasks.</p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_05.png" height="40"/>&nbsp;&nbsp;Simulation</h3>
+                    <h3><img src="images/icons/icon_05.png"
+                        height="40"/>&nbsp;&nbsp;Simulation</h3>
                     <p>EnviRe supports the process to automatically build
                     simulation models in the real-time physics engine. This
                     allows to generate simulated worlds based on the models generated
                     by the robot from its interactions with the real world.</p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_06.png" height="40"/>&nbsp;&nbsp;Visualization</h3>
+                    <h3><img src="images/icons/icon_06.png"
+                        height="40"/>&nbsp;&nbsp;Visualization</h3>
                     <p>Envire provides a visualization module based on Vizkit3D
                     plugins. Vizkit3D work on a modular fashion based on Open
                     Scene Graph, OpenGL and Qt. Vizkit3D supports standalone
@@ -179,13 +207,15 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_07.png" height="40"/>&nbsp;&nbsp;Plugin System</h3>
+                    <h3><img src="images/icons/icon_07.png"
+                        height="40"/>&nbsp;&nbsp;Modules</h3>
                     <p>Envire is designed based on a modular plug-in mechanism
                     in order to facilitate maintainability and integrability of
                     3rd party libraries as OpenCV, PCL and OctoMap.</p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_08.png" height="40"/>&nbsp;&nbsp;Serialization</h3>
+                    <h3><img src="images/icons/icon_08.png"
+                        height="40"/>&nbsp;&nbsp;Serialization</h3>
                     <p>Envire provides common services. All objects supports
                     serialization/deserialization. There is also handling for
                     meta information associated with the individual elements.
@@ -194,10 +224,12 @@
                     environment.</p>
                 </div>
                 <div class="col-md-4">
-                    <h3><img src="images/icons/icon_09.png" height="40"/>&nbsp;&nbsp;Framework Integration</h3
+                    <h3><img src="images/icons/icon_09.png"
+                        height="40"/>&nbsp;&nbsp;Framework Integration</h3>
                     <p>Envire is a standalone set of modules that comprise a
-                    library. Though Envire has Rock integration services, it is
-                    framework independent and play nice with the framework of your choice.</p>
+                    library. Though Envire provides Rock framework integration
+                    services, it is framework independent and integrates nice
+                    with the framework of your choice.</p>
                 </div>
             </div>
             <div class="row">
@@ -205,12 +237,15 @@
                 </div>
                 <div class="col-md-4">
                     <h3><img src="images/icons/icon_10.png" height="40"/>&nbsp;&nbsp;GIS</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>            
+                    <p>Envire is a standalone set of modules that comprise a
+                    library. Though Envire provides Rock framework integration
+                    services, it is framework independent and integrates nice
+                    with the framework of your choice.</p>
                 </div>
-                <div class="col-md-4">  
-                </div>    
-            </div>    
-        </div>    
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
     </div>
 
     {% include footer.html %}
