@@ -42,6 +42,7 @@ function loadto(url,snippetId,target,callback){
 	load(url,function(file){
 		//var target = document.getElementById("text");
 		
+		console.log(file);
 		
 		var starttag = '#snippet_begin:'+snippetId;
 		var stoptag = '#snippet_end:'+snippetId;
