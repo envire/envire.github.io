@@ -48,17 +48,15 @@ function loadto(url,snippetId,target,callback){
 		var start = file.indexOf(starttag);
 		var stop = file.indexOf(stoptag);
 		
-		console.log(start);
-		console.log(stop);
-		
-		if (start ==-1){
+		if (start == -1){
 			target.innerHTML = "could not find snippet start tag " + starttag + "<br>in " + url;
+			return;
 		}
-		if (stop ==-1){
+		if (stop == -1){
 			target.innerHTML = "could not find snippet tag " + stoptag + "<br>in " + url;
+			return;
 		}
-		console.log(starttag);
-		console.log(stoptag);
+
 		var snippet = file.substring(start,stop);
 		
 		//remove potential \r
@@ -69,11 +67,9 @@ function loadto(url,snippetId,target,callback){
 		snippet = lines.slice(1,-1);
 		snippet = snippet.join("\n");
 			
-		console.log(snippet);
 		//search for snippet start of id
 		
 		//extract code
-		console.log(target);
 		target.innerHTML = snippet;
 		callback(target);
 	});
