@@ -42,13 +42,18 @@ function loadto(url,snippetId,target,callback){
 	load(url,function(file){
 		//var target = document.getElementById("text");
 		
-		console.log(file);
-		
 		var starttag = '#snippet_begin:'+snippetId;
 		var stoptag = '#snippet_end:'+snippetId;
 		
 		var start = file.indexOf(starttag);
 		var stop = file.indexOf(stoptag);
+		
+		if (start ==-1){
+			target.innerHTML = "could not find snippet start tag " + starttag + "<br>in " + url;
+		}
+		if (stop ==-1){
+			target.innerHTML = "could not find snippet tag " + stoptag + "<br>in " + url;
+		}
 		console.log(starttag);
 		console.log(stoptag);
 		var snippet = file.substring(start,stop);
