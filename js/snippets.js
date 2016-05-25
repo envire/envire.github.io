@@ -1,17 +1,31 @@
 /**
- * 
- * 
+ *
+ *
  * <script src="js/jquery-1.12.3.min.js"></script>
- * 
- * 
+ *
+ *
  * <link rel="stylesheet" href="/css/default.min.css">
  * <script src="/js/highlight.min.js"></script>
- * 
- * 
+ *
+ *
  * <body onload='init_snippets()'>
  * <pre><code data-snippetId="first" data-file="http://localhost:9292/asguard/test.cpp">test</code></pre>
- * 
+ *
  */
+
+
+
+
+ function escapeHtml(unsafe) {
+     return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+  }
+
+
 
 function get(url){
 	var loader = $.get( url, function() {
@@ -34,24 +48,27 @@ function load(url,callback){
 	var loader = get(url);
 	loader.done(function(data){
 		callback(data);
-	});	
+	});
 };
 
 function loadto(url,snippetId,target,callback){
 	var x;
 	load(url,function(file){
 		//var target = document.getElementById("text");
-		
+		//console.log("-----------------------");
+		//console.log("id " + snippetId);
 		var starttag = '#snippet_begin:'+snippetId;
 		var stoptag = '#snippet_end:'+snippetId;
-		
+		//console.log("starttag " + starttag);
+		//console.log("stoptag " + stoptag);
 		var start = file.indexOf(starttag);
 		var stop = file.indexOf(stoptag);
-		
-                if (target.innerHTML != "")
-                {
-                    return;
-                }
+		//console.log("start " + start);
+		//console.log("stop " + stop);
+    if (target.innerHTML != "")
+    {
+        return;
+    }
 		if (start == -1){
 			target.innerHTML = "could not find snippet start tag " + starttag + "<br>in " + url;
 			return;
@@ -62,22 +79,20 @@ function loadto(url,snippetId,target,callback){
 		}
 
 		var snippet = file.substring(start,stop);
-		
+
 		//remove potential \r
 		//snippet = snippet.replace(/(\r)/gm,"");
 		var lines = snippet.split("\n");
-		
+
 		//remove tag lines
 		snippet = lines.slice(1,-1);
 		snippet = snippet.join("\n");
-			
-		//search for snippet start of id
-		
+		//console.log(snippet);
 		//extract code
-		target.innerHTML = snippet;
+		target.innerHTML = escapeHtml(snippet);
 		callback(target);
 	});
-	
+
 }
 
 function init_snippets(){
