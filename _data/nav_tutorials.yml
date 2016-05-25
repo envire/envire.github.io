@@ -1,5 +1,7 @@
 - title: Quick start
   items:
+  - id: tutorial_writing_tutorials
+    title: Writing Tutorials
   - id: tutorial_getting_started
     title: Getting started
 
