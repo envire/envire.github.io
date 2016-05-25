@@ -16,6 +16,9 @@
       title: Tree Views
     - id: tutorial_basic_envire_graph_new_items
       title: Creating new Item Types
+    - id: tutorial_basic_envire_graph_3d_visualization
+      title: Using the Envire Visualizer
+
 
 - title: Advanced
   items:
