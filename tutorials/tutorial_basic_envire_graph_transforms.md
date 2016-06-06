@@ -34,20 +34,11 @@ Since creating the ``TreeView`` walks the whole graph once, using this methods
 only makes sense when multiple transformations need to be calculated.
 
 If you need to calculate the same transformation multiple times, you can
-use ``getPath()`` to retrieve  a list of all frames that need to be traversed
+use ``getPath()`` to retrieve a list of all frames that need to be traversed
 to calculate the transformation. The path can be used to speed up the calculation
 of the transform even further.
+<pre><code data-snippetId="graph_transforms_path_get" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/transforms.cpp"></code></pre>
 
-**TODO NOT IMPLEMENTED**
-
-```cpp
-EnvireGraph g;
-const FrameId a = "frame_a";
-const FrameId b = "frame_b";
-/* ... */
-const vector<FrameId> path = graph.getPath(A, D);
-const Transform tf = graph.getTransform(a, b, path);
-```
 
 ## Disconnecting a Frame from the Graph
 ``disconnectFrame()`` can be used to remove all transformations coming from
