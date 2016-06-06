@@ -90,14 +90,8 @@ A convenience method exist to get an ``ItemIterator`` of the i'th item:
 ## Accessing Items without Iterators
 If type information is not available at compile time, ``getItems()`` can also
 be used with ``std::type_index``:
+<pre><code data-snippetId="graph_items_index_itemlist" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/items.cpp"></code></pre>
 
-```cpp
-EnvireGraph g;
-const FrameId frame = "frame";
-/* ... */
-const std::type_index index(typeid(Item<string>));
-const Frame::ItemList& items = graph.getItems(frame, index);
-```
 The returned reference points directly to graph internal memory.
 
 ## Removing Items
@@ -105,26 +99,7 @@ The returned reference points directly to graph internal memory.
 Items can be removed by calling ``removeItemFromFrame()``. Removing items invalidates
 all iterators of the same type. To be able to iteratively remove items, the
 method returns a new pair of iterators.
-
-```cpp
-EnvireGraph g;
-const FrameId frame = "frame";
-/* ... */
-using Iterator = EnvireGraph::ItemIterator<Item<string>>;
-Iterator begin, end;
-std::tie(begin, end) = g.getItems<Item<string>>(frame);
-
-for(; begin != end;)
-{
-    std::tie(begin, end) = g.removeItemFromFrame(frame, begin);
-}
-```
+<pre><code data-snippetId="graph_items_delete" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/items.cpp"></code></pre>
 
 All items can be removed at once using ``clearFrame()``.
-
-```cpp
-EnvireGraph g;
-const FrameId frame = "frame";
-/* ... */
-g.clearFrame(frame);
-```
+<pre><code data-snippetId="graph_items_clear" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/items.cpp"></code></pre>
