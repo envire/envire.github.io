@@ -17,8 +17,14 @@ Note that the view will most likely be copied on return. If the tree is large
 you might want to avoid that copy and pass an empty view as out-parameter instead:
 <pre><code data-snippetId="graph_trees_get_2" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/trees.cpp"></code></pre>
 
+
+## Updating Tree Views
+
 By default, a tree view shows a snapshot of the graph. I.e. if the graph changes,
 the changes will not be visible in the view. The view or parts of it might
 become invalid when vertices or edges are removed from the graph.
 To avoid this, you can request a self-updating tree view:
 <pre><code data-snippetId="graph_trees_get_3" data-file="https://raw.githubusercontent.com/envire/envire-tutorials/master/src/envire_graph_tutorials/trees.cpp"></code></pre>
+
+The view has three signals ``crossEdgeAdded``, ``edgeAdded`` and ``edgeRemoved``
+that will be emitted whenever the tree view changes.
