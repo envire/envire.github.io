@@ -17,64 +17,41 @@ informations about all available plug-ins the plugin_manager library is used.
 
 For more details read the design section of this page.
 
-### Providing a plug-in
+### Providing a user-data plug-in
 
-There are two macros which shall be used in order to define a new plug-in class for EnviRe:
+To be able to handle data types using EnviRe they have to be embedded into a ``envire::core::Item<T>`` class.
+The ``envire::core::Item`` class augments the embedded type by a time-stamp, a reference frame and an unique ID.
 
-- ``ENVIRE_PLUGIN_HEADER ( namespace::classname )``
+To register a new plug-in of the type ``envire::core::Item<namespace::classname>`` for EnviRe, the macro
+``ENVIRE_REGISTER_ITEM ( namespace::classname )`` has to be placed in a source file (*.cpp).
+It adds the class loader registration macro ``CLASS_LOADER_REGISTER_CLASS`` and also registers the
+class to the serialization (See the [serialization]({{site.baseurl}}/docs/core_serialization.html) section for further details).
 
-  Has to be placed in the class declaration in the header of the new type. It is not necessary
-  but recommended to add the name space in order to have a more unique lookup name.
-  It adds a function which provides the name of the class and adds definitions related to the
-  serialization
-  (See the [serialization]({{site.baseurl}}/docs/core_serialization.html) section for further details).
-
-- ``ENVIRE_REGISTER_PLUGIN ( namespace::classname )``
-
-  Has to be placed in the source file of the class.
-  It adds the class loader registration macro ``CLASS_LOADER_REGISTER_CLASS`` and also registers the
-  class to the serialization
-  (See the [serialization]({{site.baseurl}}/docs/core_serialization.html) section for further details).
-
+Note that the class ``namespace::classname`` must be serializeable by [boost serialization](http://www.boost.org/libs/serialization/doc/).
 
 In order to make the plug-in available to your system a XML file containing meta informations about the
 plug-in class needs to be exported.
 
-
-
 #### Example
 
 The following example shows how a new EnviRe item, with the embedded type
-``boost::shared_ptr< ::octomap::AbstractOcTree >``, is defined:
+``boost::shared_ptr<::octomap::AbstractOcTree>``, is defined in a *.cpp file:
 
 ```cpp
-namespace envire { namespace octomap
-{
-    typedef boost::shared_ptr< ::octomap::AbstractOcTree > AbstractOcTreePtr;
+#include <octomap/AbstractOcTree.h>
+#include <boost/shared_ptr.hpp>
+#include <envire_core/plugin/Plugin.hpp>
 
-    class OcTree : public envire::core::Item< AbstractOcTreePtr >
-    {
-        ENVIRE_PLUGIN_HEADER(envire::octomap::OcTree)
-    };
-}}
-```
-The ``envire::core::Item`` class augments the embedded type by a time-stamp,
-a reference frame and an unique ID.
-
-In the source file of the new class only the ``ENVIRE_REGISTER_PLUGIN`` macro needs to added:
-
-```cpp
-#include "OcTree.hpp"
-
-ENVIRE_REGISTER_PLUGIN( envire::octomap::OcTree )
+ENVIRE_REGISTER_ITEM( boost::shared_ptr<octomap::AbstractOcTree> )
 ```
 
-Note that this is a minimal example of a new EnviRe item class definition. The user is
-free to define more functions or members in this class.
 It is strongly recommended to use this macros when a new item is defined, since the plug-in
 mechanism and the serialization relay on it. Nonetheless it's
-possible to define item classes without using the macros, in this case the class won't
+possible to define item classes without using this macro, in this case the class won't
 be available as plug-in and it won't be possible to serialize the class.
+
+Since the embedded type must be serializeable by [boost serialization](http://www.boost.org/libs/serialization/doc/),
+it might be nessesary to implement the nessesary methods in a header file.
 
 
 To make the plug-in available to your system a XML file containing meta informations
@@ -83,7 +60,7 @@ A minimal layout would look like this:
 
 ```xml
 <library path="envire_octomap">
-  <class class_name="envire::octomap::OcTree" base_class_name="envire::core::ItemBase">
+  <class class_name="envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>" base_class_name="envire::core::ItemBase">
   </class>
 </library>
 ```
@@ -95,9 +72,10 @@ a singleton instance.
 
 ```xml
 <library path="envire_octomap">
-  <class class_name="envire::octomap::OcTree" base_class_name="envire::core::ItemBase">
+  <class class_name="envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>" base_class_name="envire::core::ItemBase">
     <description>Octomap OcTree plugin</description>
     <associations>
+      <class class_name="boost::shared_ptr<octomap::AbstractOcTree>"></class>
       <class class_name="octomap::AbstractOcTree"></class>
       <class class_name="octomap::OcTree"></class>
     </associations>
@@ -137,10 +115,10 @@ In the following example the OcTree plug-in class is loaded as abstract ItemBase
 
 ```cpp
 envire::core::ClassLoader* loader = envire::core::ClassLoader::getInstance();
-if(loader->hasEnvireItem("envire::octomap::OcTree"))
+if(loader->hasEnvireItem("envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>"))
 {
     ItemBase::Ptr item;
-    if (loader->createEnvireItem("envire::octomap::OcTree", item))
+    if (loader->createEnvireItem("envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>", item))
     {
         // A new item has been successfully created
     }
@@ -150,21 +128,13 @@ if(loader->hasEnvireItem("envire::octomap::OcTree"))
 The plug-in class can be also directly casted:
 
 ```cpp
-envire::core::Item< AbstractOcTreePtr >::Ptr item;
-envire::core::ClassLoader::getInstance()->createEnvireItem< envire::core::Item< AbstractOcTreePtr > >("envire::octomap::OcTree", item);
+envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>::Ptr item;
+envire::core::ClassLoader::getInstance()->createEnvireItem< envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>> >("envire::core::Item<boost::shared_ptr<octomap::AbstractOcTree>>", item);
 ```
 In this case at least the embedded type has to be known at compile time.
 
-When the actual class is known at compile time there is little benefit in using the plug-in
-mechanism, but it still can be done:
-
-```cpp
-envire::octomap::OcTree::Ptr item;
-envire::core::ClassLoader::getInstance()->createEnvireItem< envire::octomap::OcTree >("envire::octomap::OcTree", item);
-```
-
 Note that the name space informations not necessarily need to be provided.
-``createEnvireItem("OcTree", item)`` shall also return successfully if no other equally named
+``createEnvireItem("AbstractOcTree", item)`` shall also return successfully if no other equally named
 plug-in class is available.
 
 
