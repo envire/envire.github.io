@@ -19,15 +19,15 @@ For more details read the design section of this page.
 
 ### Providing a user-data plug-in
 
-To be able to handle data types using EnviRe they have to be embedded into a ``envire::core::Item<T>`` class.
-The ``envire::core::Item`` class augments the embedded type by a time-stamp, a reference frame and an unique ID.
+In order to handle user data types in EnviRe they have to be embedded into a ``envire::core::Item<T>`` class.
+The ``Item`` class augments the embedded type by a time-stamp, a reference frame and an unique ID.
 
-To register a new plug-in of the type ``envire::core::Item<namespace::classname>`` for EnviRe, the macro
-``ENVIRE_REGISTER_ITEM ( namespace::classname )`` has to be placed in a source file (*.cpp).
+To register a new plug-in of the type ``envire::core::Item<namespace::UserType>`` for it's use with EnviRe, the macro
+``ENVIRE_REGISTER_ITEM ( namespace::UserType )`` has to be placed in a source file (*.cpp).
 It adds the class loader registration macro ``CLASS_LOADER_REGISTER_CLASS`` and also registers the
 class to the serialization (See the [serialization]({{site.baseurl}}/docs/core_serialization.html) section for further details).
 
-Note that the class ``namespace::classname`` must be serializeable by [boost serialization](http://www.boost.org/libs/serialization/doc/).
+Note that the class ``UserType`` must be serializeable by [boost serialization](http://www.boost.org/libs/serialization/doc/) at that point.
 
 In order to make the plug-in available to your system a XML file containing meta informations about the
 plug-in class needs to be exported.
@@ -51,7 +51,7 @@ possible to define item classes without using this macro, in this case the class
 be available as plug-in and it won't be possible to serialize the class.
 
 Since the embedded type must be serializeable by [boost serialization](http://www.boost.org/libs/serialization/doc/),
-it might be nessesary to implement the nessesary methods in a header file.
+it might be necessary to implement the necessary methods in a header file.
 
 
 To make the plug-in available to your system a XML file containing meta informations
@@ -133,9 +133,7 @@ envire::core::ClassLoader::getInstance()->createEnvireItem< envire::core::Item<b
 ```
 In this case at least the embedded type has to be known at compile time.
 
-Note that the name space informations not necessarily need to be provided.
-``createEnvireItem("AbstractOcTree", item)`` shall also return successfully if no other equally named
-plug-in class is available.
+It is also possible to get an Item for a given embedded type by calling the method ``createEnvireItemFor("boost::shared_ptr<octomap::AbstractOcTree>", item)``.
 
 
 ## Design
