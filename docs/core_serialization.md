@@ -11,9 +11,9 @@ EnviRe supports serialization and de-serialization based on the [boost serializa
 ## Overview
 
 EnviRe relays on boost serialization to be able to save and load it's internal state.
-It also supports serialization of polymorphic types through the base types.
-
-Items can be serialized using the following methods:
+By making use of the plugin architecture, it is possible to serialize and de-serialize
+``Item``'s when knowing only their base class ``ItemBase``.
+However in this case the following methods need to be used:
 
 ```cpp
     envire::core::ItemBase::Ptr plugin;
@@ -37,73 +37,95 @@ Also the complete graph with all it's items can be serialized.
 ```cpp
     envire::core::EnvireGraph graph;
     // fill envire graph
-    boost::archive::polymorphic_binary_oarchive oa(stream);
+    boost::archive::binary_oarchive oa(stream);
     oa << graph;
 ```
 
 ```cpp
     envire::core::EnvireGraph graph;
-    boost::archive::polymorphic_binary_iarchive ia(stream);
+    boost::archive::binary_iarchive ia(stream);
     ia >> graph;
 ```
 
 ### Providing a serializable EnviRe item
 
 In order to create a new EnviRe item and support it's serialization the item and it's embedded type must be serializable.
-There are two macros which shall be used in order to define a new item class for EnviRe:
 
-- ``ENVIRE_PLUGIN_HEADER ( namespace::classname )``
+To register a new Item of type ``envire::core::Item<namespace::UserType>`` for it's use with EnviRe, the macro
+``ENVIRE_REGISTER_ITEM ( namespace::UserType )`` has to be placed in a source file (*.cpp).
+It registers the class to the serialization by exporting the class to boost using ``BOOST_CLASS_EXPORT`` and creates a helper class which is statically instantiated as soon as the library is loaded. This allows to serialize base classes correctly even if the concrete class is not included (unknown to the implementation at runtime). However the shared library needs to be linked or dynamically loaded of course.
+The serialization will try to load the necessary plugin libraries on it's own, i.e. they have to be available on your system.
+The macro will also export the class as class_loader plugin (See the [plugins]({{site.baseurl}}/docs/core_plugins.html) section for further details).
 
-  Has to be placed in the class declaration in the header of the new type. It is not necessary
-  but recommended to add the name space in order to have a more unique lookup name.
-  It adds the boost serialization function to the class definition.
+The embedded type must be serializable by boost serialization as well. This can be done by defining a intrusive or non-intrusive function. More information can be found in the [boost serialization](http://www.boost.org/libs/serialization/doc/) documentation.
 
-- ``ENVIRE_REGISTER_PLUGIN ( namespace::classname )``
+#### Example
 
-  Has to be placed in the source file of the class.
-  It registers the class to the serialization by exporting the class to boost using ``BOOST_CLASS_EXPORT`` and creates a helper class which is statically instantiated as soon as the library is loaded. This allows to serialize base classes correctly even if the concrete class is not included (unknown to the implementation at runtime). However the shared library needs to be linked or loaded of course.
+DummyType.hpp:
 
-This two macros add serialization support for an item class. However the embedded type must be serializable by boost serialization as well. This can be done by defining a intrusive or non-intrusive function. More information
-can be found in the [boost serialization](http://www.boost.org/libs/serialization/doc/) documentation.
+```cpp
+// Include the actual type definition (can also be in the same header)
+#include <example/DummyType.hpp>
+
+// write non-intrusive boost serialization for DummyType (if the type is already serializable by boost the header file might not be necessary)
+namespace boost { namespace serialization {
+
+    template<class Archive>
+    void serialize(Archive & ar, ::example::DummyType & dummy_type, const unsigned int version)
+    {
+        ar & dummy_type.member1;
+        ar & dummy_type.member2;
+    }
+
+}}
+```
+
+DummyType.cpp:
+
+```cpp
+#include "DummyType.hpp"
+#include <envire_core/plugin/Plugin.hpp>
+
+// Register the new Item
+ENVIRE_REGISTER_ITEM( example::DummyType )
+```
+
+How to create and install the plugin meta-informations on your system is described in the [plugins]({{site.baseurl}}/docs/core_plugins.html) section.
 
 ## Framework connection
 
-In the [ROCK](http://www.rock-robotics.org) framework types are exported using the [typelib](http://rock-robotics.org/master/api/typelib/) library. Typelib is able to automatically parse types, but has some limitations: e.g. pointer, virtual functions, private members, std library container (besides of std::vector). For those more complex classes it is possible to define so called opaque types and write methodes to convert the data structure from the origin type to the opaque type and vise versa. The opaque type must be typelib compatible and does hold the same data that the origin type does.
-In case a type is not typelib compatible, but serializable by boost, the opaque and its conversions can be autogenerated. 
+In the [ROCK](http://www.rock-robotics.org) framework types are exported using the [typelib](http://rock-robotics.org/master/api/typelib/) library.
+Typelib is able to automatically parse types, but has some limitations: e.g. pointer, virtual functions, private members, std library container (besides of std::vector and std::string). For those more complex classes it is possible to define so called opaque types and write methods to convert the data structure from the origin type to the opaque type and vise versa. The opaque type must be typelib compatible and does hold the same data that the origin type does.
 
-Since EnviRe items (``envire::core::Item<T>``) are not typelib compatible it is necessary to generate an opaque type for them. To achieve this it is not feasible to use boost serialization, since the layout is known and a suitable opaque type allowing introspection can be generated.
+Since EnviRe items (``envire::core::Item<T>``) are not typelib compatible due to it's use of virtual functions, only the inner data container is exported to typelib.
+The inner data holding container of every ``Item`` is a ``envire::core::SpatioTemporal<T>`` class. Since it is also templated with the user data type the concrete type has to
+be exported to typelib. This can be achieved using the following commands in an .orogen file:
 
-### Orocos type export
+```ruby
+# exports the type envire::core::SpatioTemporal<example::DummyType> to typelib
+typekit do
+    envire_someclass = spatio_temporal '/example/DummyType'
+    export_types envire_someclass
+end
+```
 
-Autogenerate opaque (transport) type for classes supporting boost serialization:
+Note that at this point the embedded type ``example::DummyType`` must already be known to typelib.
+It can either be typelib compatible (the header of the type can be parsed), the user can write it's own opaque type or the boost serialization based opaque auto-generation can be used.
+
+If the embedded type isn't directly typelib compatible the easiest way of exporting it is to make use of the fact that it is serializable by boost.
+To auto-generate opaque (transport) types for classes supporting boost serialization the following commands in an .orogen file can be used:
 
 ```ruby
 # define opaque
 typekit do
-    opaque_autogen '/namespace/SomeClass', 
-                    :includes => 'namespace/SomeClass.hpp', 
+    opaque_autogen '/example/DummyType',
+                    :includes => 'example/DummyType.hpp',
                     :type => :boost_serialization
 end
 # type export
 typekit do
-    export_types '/namespace/SomeClass'
+    export_types '/example/DummyType'
 end
 ```
 
-Autogenerate oqaque (transport) type for classes inheriting from ``envire::core::Item<T>``:
-
-```ruby
-# define opaque
-typekit do
-    opaque_autogen '/namespace/SomeClassItem', 
-                    :includes => 'namespace/SomeClassItem.hpp', 
-                    :type => :envire_serialization,
-                    :embedded_type => '/namespace/SomeClass'
-end
-# type export
-typekit do
-    export_types '/namespace/SomeClassItem'
-end
-```
-
-The difference between both methods is that the autogenerated envire item opaque is not just a binary stream. The opaque type has the same members than the ``envire::core::Item<T>``, i.e. unique id, frame name, timestamp and the embedded type. The embedded type must either be typelib compatible, the user has to write an opaque type or the boost serialization based opaque autogeneration can be used.
+This makes the type ``example::DummyType`` known to typelib.
