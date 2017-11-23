@@ -10,7 +10,11 @@
             {% else %}
                 <li>
             {% endif %}
-            <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
+            {% if item.id != null %}
+              <a href="{{ item.id | prepend: site.baseurl }}.html">{{ item.title }}</a>
+            {% else %}
+              <a href="{{ item.url | absolute_url}}">{{ item.title }}</a>
+            {% endif %}
             {% for subitem in item.subitems %}
             <ul>
                 {% if page.url contains subitem.id %}
@@ -18,7 +22,11 @@
                 {% else %}
                     <li>
                 {% endif %}
-                    <a href="{{ subitem.id | prepend: site.baseurl }}.html">{{ subitem.title }}</a>
+                    {% if item.id != null %}
+                      <a href="{{ subitem.id | prepend: site.baseurl }}.html">{{ subitem.title }}</a>
+                    {% else %}
+                      <a href="{{ subitem.url | absolute_url}}">{{ subitem.title }}</a>
+                    {% endif %}                      
                 </li>
             </ul>
             {% endfor %}
