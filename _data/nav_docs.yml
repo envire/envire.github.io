@@ -17,7 +17,7 @@
   - id: core_examples
     title: Examples
     subitems:
-      - id: tutorial_basic_envire_graph_frames
+      - url: tutorials/tutorial_basic_envire_graph_frames.html
         title: Working with Frames
       - id: tutorial_basic_envire_graph_transforms
         title: Working with Transformations
