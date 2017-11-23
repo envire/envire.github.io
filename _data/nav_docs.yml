@@ -18,8 +18,8 @@
     title: Examples
     subitems:
       - url: tutorials/tutorial_basic_envire_graph_frames.html
-        title: Working with Frames
-      - id: tutorial_basic_envire_graph_transforms
+        title: Working with Frames and Items
+      - url: tutorials/tutorial_basic_envire_graph_transforms.html
         title: Working with Transformations
 - title: Maps
   items:
