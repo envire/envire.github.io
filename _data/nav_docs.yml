@@ -34,7 +34,7 @@
         title: Multi-Level Surface Map
       - id: maps_traversability_map
         title: Traversability Map
-  - id: maps_types_tological
+  - id: maps_topological_map
     title: Topological Map
   - id: maps_types_geo
     title: Geo Map
