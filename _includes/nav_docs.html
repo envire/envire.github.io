@@ -22,7 +22,7 @@
                 {% else %}
                     <li>
                 {% endif %}
-                    {% if item.id != null %}
+                    {% if subitem.id != null %}
                       <a href="{{ subitem.id | prepend: site.baseurl }}.html">{{ subitem.title }}</a>
                     {% else %}
                       <a href="{{ subitem.url | absolute_url}}">{{ subitem.title }}</a>
