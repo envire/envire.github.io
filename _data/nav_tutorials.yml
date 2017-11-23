@@ -11,7 +11,7 @@
     title: Envire Graph
     subitems:
     - id: tutorial_basic_envire_graph_frames
-      title: Manipulating Frames
+      title: Manipulating Frames and Items
     - id: tutorial_basic_envire_graph_transforms
       title: Managing Transformations
     - id: tutorial_basic_envire_treeview
