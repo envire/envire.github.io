@@ -32,7 +32,7 @@
         title: Elevation Map
       - id: maps_mls
         title: Multi-Level Surface Map
-      - id: maps_traversability
+      - id: maps_traversability_map
         title: Traversability Map
   - id: maps_types_tological
     title: Topological Map
